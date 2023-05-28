@@ -11,6 +11,8 @@ jobs:
         with:
           node-version: 18.x
       - run: |
+          test -n "$NPM_TOKEN"
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
           ./build.sh
           npm publish
         env:
